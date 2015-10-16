@@ -1,0 +1,16 @@
+{
+    "binddn": "uid=readonly-admin,ou=Users,dc=example,dc=com",
+    "emailsearchfilter": "",
+    "emailsearch_scope": "subtree",
+    "searchfilter": "",
+    "search_scope": "subtree",
+    "authserver": {
+        "id": 6
+    },
+    "basedn": "ou=Users,dc=example,dc=com",
+    "usetls": true,
+    "usesearch": false,
+    "emailattribute": "mail",
+    "id": 2,
+    "nameattribute": "uid"
+}

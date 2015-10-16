@@ -14,6 +14,13 @@ Licensed under MPL 2.0.
 """
 import os
 
+try:
+    import multiprocessing
+    # Workaround for multiprocessing atexit exception bug
+    assert multiprocessing
+except ImportError:
+    pass
+
 from imp import load_source
 from setuptools import setup, find_packages
 
@@ -54,7 +61,8 @@ def main():
         packages=find_packages(exclude=['tests']),
         include_package_data=True,
         zip_safe=False,
-        tests_require=['mock', 'nose'],
+        tests_require=['nose'],
+        test_suite='nose.collector',
         install_requires=['restkit'],
         classifiers=[
             'Development Status :: 1 - Planning',

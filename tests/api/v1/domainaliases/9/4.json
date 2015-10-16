@@ -1,0 +1,9 @@
+{
+    "status": true,
+    "domain": {
+        "name": "example.com",
+        "id": 2
+    },
+    "id": 4,
+    "name": "example.net"
+}

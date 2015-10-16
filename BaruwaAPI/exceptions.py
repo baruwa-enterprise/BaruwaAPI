@@ -7,17 +7,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 """
-BaruwaAPI
+BaruwaAPI exceptions
 """
 
-# pylint: disable=invalid-name,bad-builtin
-version_info = (0, 0, 1)
-__author__ = "Andrew Colin Kissa"
-__copyright__ = u"© 2010-2015 Andrew Colin Kissa"
-__email__ = "andrew@topdog.za.net"
-__version__ = ".".join(map(str, version_info))
 
-from BaruwaAPI.resource import BaruwaAPIClient
-
-
-assert BaruwaAPIClient
+class BaruwaAPIError(Exception):
+    """BaruwaAPI Exceptions"""
+    def __init__(self, code, message):
+        """Init"""
+        super(BaruwaAPIError, self).__init__(message)
+        self.code = code

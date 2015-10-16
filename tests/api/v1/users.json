@@ -1,0 +1,50 @@
+{
+    "items": [{
+        "username": "fuzzy@example.com",
+        "send_report": false,
+        "account_type": 3,
+        "addresses": [],
+        "firstname": "Fuzzy",
+        "organizations": [],
+        "lastname": "Lumpkins",
+        "spam_checks": false,
+        "email": "fuzzy@example.com",
+        "low_score": 2.0,
+        "high_score": 12.0,
+        "created_on": "2014:09:20:15:14:30",
+        "last_login": "2014:10:03:08:54:28",
+        "active": true,
+        "timezone": "Africa/Abidjan",
+        "local": true,
+        "id": 4,
+        "domains": [{
+            "name": "example.com",
+            "id": 4
+        }]
+    }, {
+        "username": "rowdyrough",
+        "send_report": false,
+        "account_type": 3,
+        "addresses": [],
+        "firstname": "Rowdy",
+        "organizations": [],
+        "lastname": "Rough",
+        "spam_checks": false,
+        "email": "rowdyrough@example.com",
+        "low_score": 0.0,
+        "high_score": 0.0,
+        "created_on": "2014:10:07:06:35:48",
+        "last_login": "2014:10:11:22:38:11",
+        "active": true,
+        "timezone": "Africa/Johannesburg",
+        "local": true,
+        "id": 5,
+        "domains": [{
+            "name": "example.com",
+            "id": 4
+        }]
+    }],
+    "meta": {
+        "total": 2
+    }
+}

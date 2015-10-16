@@ -1,0 +1,8 @@
+{
+    "protocol": 2,
+    "enabled": true,
+    "user_map_template": "example_%(user)s",
+    "split_address": true,
+    "address": "192.168.1.151",
+    "id": 5
+}

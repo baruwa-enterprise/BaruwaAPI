@@ -1,0 +1,16 @@
+{
+    "items": [{
+        "domain": {
+            "name": "example.com",
+            "id": 2
+        },
+        "protocol": 1,
+        "enabled": true,
+        "id": 2,
+        "address": "192.168.1.150",
+        "port": 25
+    }],
+    "meta": {
+        "total": 1
+    }
+}

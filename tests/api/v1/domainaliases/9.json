@@ -1,0 +1,14 @@
+{
+    "items": [{
+        "status": true,
+        "domain": {
+            "name": "example.com",
+            "id": 2
+        },
+        "id": 2,
+        "name": "example.net"
+    }],
+    "meta": {
+        "total": 1
+    }
+}
