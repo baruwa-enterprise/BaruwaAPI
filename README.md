@@ -1,7 +1,7 @@
 # BaruwaAPI
 
 
-## Python bindings for Baruwa REST API
+## Python bindings for the Baruwa REST API
 
 
 
