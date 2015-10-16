@@ -61,7 +61,7 @@ def main():
         packages=find_packages(exclude=['tests']),
         include_package_data=True,
         zip_safe=False,
-        tests_require=['nose'],
+        tests_require=['nose', 'coverage'],
         test_suite='nose.collector',
         install_requires=['restkit'],
         classifiers=[

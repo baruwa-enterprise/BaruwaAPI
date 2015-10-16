@@ -1,3 +1,4 @@
 nose
 restkit
+coverage
 multiprocessing
