@@ -65,7 +65,7 @@ def main():
         test_suite='nose.collector',
         install_requires=['restkit'],
         classifiers=[
-            'Development Status :: 1 - Planning',
+            'Development Status :: 3 - Alpha',
             'Programming Language :: Python',
             'Programming Language :: Python :: 2.6',
             'Programming Language :: Python :: 2.7',
