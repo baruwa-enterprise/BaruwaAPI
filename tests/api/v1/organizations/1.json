@@ -1,0 +1,11 @@
+{
+    "domains": [{
+        "name": "example.com",
+        "id": 2
+    }, {
+        "name": "example.net",
+        "id": 4
+    }],
+    "name": "My Org",
+    "id": 3
+}

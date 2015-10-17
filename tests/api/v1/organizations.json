@@ -1,0 +1,27 @@
+{
+    "items": [{
+        "domains": [{
+            "name": "example.com",
+            "id": 2
+        }, {
+            "name": "example.net",
+            "id": 4
+        }],
+        "name": "TDS",
+        "id": 1
+    }, {
+        "domains": [{
+            "name": "example.systems",
+            "id": 9
+        }],
+        "name": "New Technology",
+        "id": 2
+    }, {
+        "domains": [],
+        "name": "My Org",
+        "id": 3
+    }],
+    "meta": {
+        "total": 3
+    }
+}
