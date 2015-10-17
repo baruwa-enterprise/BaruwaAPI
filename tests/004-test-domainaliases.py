@@ -103,3 +103,4 @@ def test_delete_domainalias(api):
         api.response.request.method,
         ENDPOINTS['domainaliases']['delete']['method'])
     t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)

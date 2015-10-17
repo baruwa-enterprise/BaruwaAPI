@@ -20,6 +20,7 @@ def test_get_alias(api):
     t.eq(api.response.status_int, 200)
     t.eq(req['id'], addressid)
     t.eq(req['address'], 'info@example.com')
+    t.raises(BaruwaAPIError, api.get_aliases, 7)
 
 
 @t.ApiRequest()
@@ -71,3 +72,4 @@ def test_delete_alias(api):
         '%s%s' % (BASE_URL, path))
     t.eq(api.response.request.method, ENDPOINTS['aliases']['delete']['method'])
     t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)

@@ -107,3 +107,4 @@ def test_delete_ldapsetting(api):
         api.response.request.method,
         ENDPOINTS['ldapsettings']['delete']['method'])
     t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)

@@ -89,3 +89,4 @@ def test_delete_radiussetting(api):
         api.response.request.method,
         ENDPOINTS['radiussettings']['delete']['method'])
     t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)

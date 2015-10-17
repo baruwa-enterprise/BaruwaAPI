@@ -111,3 +111,25 @@ def test_delete_user(api):
         '%s%s' % (BASE_URL, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['delete']['method'])
     t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)
+
+
+@t.ApiRequest()
+def test_set_user_password(api):
+    userid = 10
+    data = {
+        "password1": "Hp9hzcd1grdSqtrn",
+        "password2": "Hp9hzcd1grdSqtrn"
+    }
+    data2 = {
+        "password1": "Hp9hzcd1grdSqtrn",
+    }
+    req = api.set_user_passwd(userid, data)
+    path = ENDPOINTS['users']['password']['name'] % dict(userid=userid)
+    t.eq(
+        api.response.final_url,
+        '%s%s' % (BASE_URL, path))
+    t.eq(api.response.request.method, ENDPOINTS['users']['password']['method'])
+    t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)
+    t.raises(BaruwaAPIError, api.set_user_passwd, userid, data2)

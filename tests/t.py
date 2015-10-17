@@ -1,7 +1,7 @@
 from BaruwaAPI.resource import BaruwaAPIClient
 
 
-from _st import HOST, PORT, run_server_test
+from _st import HOST, PORT, TOKEN, run_server_test
 run_server_test()
 
 
@@ -9,7 +9,7 @@ class ApiRequest(object):
 
     def __init__(self, api_token=None, url=None, **client_opts):
         client_opts = client_opts or {}
-        self.api_token = api_token
+        self.api_token = api_token or TOKEN
         self.client_opts = client_opts
         if url is not None:
             self.url = url

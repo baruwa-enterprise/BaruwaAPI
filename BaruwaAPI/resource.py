@@ -358,4 +358,4 @@ class BaruwaAPIClient(Resource):
 
     def get_status(self):
         """Get system status"""
-        return self.api_call(ENDPOINTS['relays']['status'])
+        return self.api_call(ENDPOINTS['status'])

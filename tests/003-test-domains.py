@@ -115,3 +115,4 @@ def test_delete_domain(api):
         '%s%s' % (BASE_URL, path))
     t.eq(api.response.request.method, ENDPOINTS['domains']['delete']['method'])
     t.eq(api.response.status_int, 204)
+    t.eq(req['code'], 204)

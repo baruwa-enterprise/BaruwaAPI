@@ -29,6 +29,7 @@ from restkit.util import to_bytestring
 
 HOST = 'localhost'
 PORT = (os.getpid() % 31000) + 1024
+TOKEN = '6e2347bc-278e-42f6-a84b-fa1766140cbd'
 
 
 class HTTPTestHandler(BaseHTTPRequestHandler):
@@ -36,7 +37,13 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
     def __init__(self, request, client_address, server):
         BaseHTTPRequestHandler.__init__(self, request, client_address, server)
 
+    def _check_token(self):
+        if 'Authorization' not in self.headers or \
+                self.headers['Authorization'] != 'Bearer %s' % TOKEN:
+            self.send_error(401)
+
     def do_GET(self):
+        self._check_token()
         self.parsed_uri = urlparse(unquote(self.path))
         self.query = {}
         for key, val in parse_qsl(self.parsed_uri[4]):
@@ -45,6 +52,10 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
         extra_headers = [('Content-type', 'application/json')]
 
         if path in [
+            '/api/v1/status',
+            '/api/v1/relays/1',
+            '/api/v1/organizations/1',
+            '/api/v1/organizations',
             '/api/v1/radiussettings/1/2/3',
             '/api/v1/ldapsettings/1/2/3',
             '/api/v1/authservers/9/4',
@@ -65,6 +76,7 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             self._respond(404, [('Content-type', 'text/plain')], "Not Found")
 
     def do_POST(self):
+        self._check_token()
         self.parsed_uri = urlparse(self.path)
         self.query = {}
         for key, val in parse_qsl(self.parsed_uri[4]):
@@ -84,7 +96,15 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
                     resp[item] = form[item][0]
                 resp['id'] = 10
                 self._respond(201, extra_headers, json.dumps(resp))
+        elif path == '/api/v1/users/chpw/10':
+            content_length = int(self.headers.get('Content-length', 0))
+            body = self.rfile.read(content_length)
+            form = parse_qs(body)
+            if 'password1' in form and 'password2' in form:
+                self._respond(204, extra_headers, "")
         elif path in [
+            '/api/v1/relays/1',
+            '/api/v1/organizations',
             '/api/v1/radiussettings/1/2',
             '/api/v1/ldapsettings/1/2',
             '/api/v1/authservers/3',
@@ -105,6 +125,7 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             self._respond(404, [('Content-type', 'text/plain')], "Not Found")
 
     def do_PUT(self):
+        self._check_token()
         self.parsed_uri = urlparse(self.path)
         self.query = {}
         for key, val in parse_qsl(self.parsed_uri[4]):
@@ -124,6 +145,8 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
                 resp['id'] = 10
                 self._respond(201, extra_headers, json.dumps(resp))
         elif path in [
+            '/api/v1/relays/1',
+            '/api/v1/organizations/1',
             '/api/v1/radiussettings/1/2/3',
             '/api/v1/ldapsettings/1/2/3',
             '/api/v1/authservers/9/3',
@@ -143,7 +166,10 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             self._respond(404, [('Content-type', 'text/plain')], "Not Found")
 
     def do_DELETE(self):
+        self._check_token()
         if self.path in [
+            "/api/v1/relays/1",
+            "/api/v1/organizations/1",
             "/api/v1/radiussettings/1/2/3",
             "/api/v1/ldapsettings/1/2/3",
             "/api/v1/authservers/9/3",
