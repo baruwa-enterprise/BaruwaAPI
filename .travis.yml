@@ -9,3 +9,9 @@ install:
     - python setup.py install
 
 script: python setup.py nosetests
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+    recipients:
+      - andrew@topdog.za.net
