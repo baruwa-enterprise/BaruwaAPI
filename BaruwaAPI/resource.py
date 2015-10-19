@@ -32,7 +32,7 @@ class BaruwaAPIClient(Resource):
     def _request_headers(self):
         """Return the required API headers"""
         return {'Authorization': "Bearer %s" % self.api_token,
-                'User-Agent': 'BaruwaAPI/Python',
+                'User-Agent': 'BaruwaAPI-Python',
                 'Content-Type': 'application/json'}
 
     def request(self, *args, **kwargs):
