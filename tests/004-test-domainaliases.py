@@ -5,7 +5,8 @@ from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
 
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -15,7 +16,7 @@ def test_list_domainaliases(api):
     path = ENDPOINTS['domainaliases']['list']['name'] % dict(domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['domainaliases']['list']['method'])
@@ -35,7 +36,7 @@ def test_get_domainalias(api):
         domainid=domainid, aliasid=aliasid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['domainaliases']['get']['method'])
@@ -56,7 +57,7 @@ def test_create_domainalias(api):
     path = ENDPOINTS['domainaliases']['new']['name'] % dict(domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['domainaliases']['new']['method'])
@@ -78,7 +79,7 @@ def test_update_domainalias(api):
         domainid=domainid, aliasid=aliasid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['domainaliases']['update']['method'])
@@ -98,7 +99,7 @@ def test_delete_domainalias(api):
         domainid=domainid, aliasid=aliasid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['domainaliases']['delete']['method'])

@@ -5,7 +5,8 @@ from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
 
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -14,7 +15,7 @@ def test_list_organizations(api):
     path = ENDPOINTS['organizations']['list']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['organizations']['list']['method'])
@@ -32,7 +33,7 @@ def test_get_organization(api):
     path = ENDPOINTS['organizations']['get']['name'] % dict(orgid=orgid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['organizations']['get']['method'])
@@ -53,7 +54,7 @@ def test_create_organization(api):
     path = ENDPOINTS['organizations']['new']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['organizations']['new']['method'])
@@ -74,7 +75,7 @@ def test_update_organization(api):
     path = ENDPOINTS['organizations']['update']['name'] % dict(orgid=orgid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['organizations']['update']['method'])
@@ -89,7 +90,7 @@ def test_delete_organization(api):
     path = ENDPOINTS['organizations']['delete']['name'] % dict(orgid=orgid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['organizations']['delete']['method'])

@@ -4,8 +4,8 @@ from _st import HOST, PORT
 from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
-
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -14,7 +14,7 @@ def test_get_users(api):
     path = ENDPOINTS['users']['list']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['list']['method'])
     t.eq(api.response.status_int, 200)
     t.isin('items', req)
@@ -30,7 +30,7 @@ def test_get_user(api):
     path = ENDPOINTS['users']['get']['name'] % dict(userid=userid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['get']['method'])
     t.eq(api.response.status_int, 200)
     t.isin('username', req)
@@ -61,7 +61,7 @@ def test_create_user(api):
     path = ENDPOINTS['users']['new']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['new']['method'])
     t.eq(api.response.status_int, 201)
     t.isin('username', req)
@@ -93,7 +93,7 @@ def test_update_user(api):
     path = ENDPOINTS['users']['update']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['update']['method'])
     t.eq(api.response.status_int, 201)
     t.eq(req['low_score'], '5.0')
@@ -108,7 +108,7 @@ def test_delete_user(api):
     path = ENDPOINTS['users']['delete']['name'] % dict(userid=userid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['delete']['method'])
     t.eq(api.response.status_int, 204)
     t.eq(req['code'], 204)
@@ -128,7 +128,7 @@ def test_set_user_password(api):
     path = ENDPOINTS['users']['password']['name'] % dict(userid=userid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['users']['password']['method'])
     t.eq(api.response.status_int, 204)
     t.eq(req['code'], 204)

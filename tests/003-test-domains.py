@@ -5,7 +5,8 @@ from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
 
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -14,7 +15,7 @@ def test_list_domains(api):
     path = ENDPOINTS['domains']['list']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['domains']['list']['method'])
     t.eq(api.response.status_int, 200)
     t.isin('items', req)
@@ -30,7 +31,7 @@ def test_get_domain(api):
     path = ENDPOINTS['domains']['get']['name'] % dict(domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['domains']['get']['method'])
     t.eq(api.response.status_int, 200)
     t.eq(req['id'], 1)
@@ -65,7 +66,7 @@ def test_create_domain(api):
     path = ENDPOINTS['domains']['new']['name']
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['domains']['new']['method'])
     t.eq(api.response.status_int, 201)
     t.eq(req['name'], 'example.net')
@@ -99,7 +100,7 @@ def test_update_domain(api):
     path = ENDPOINTS['domains']['update']['name'] % dict(domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['domains']['update']['method'])
     t.eq(api.response.status_int, 200)
     t.eq(req['spam_checks'], 'n')
@@ -112,7 +113,7 @@ def test_delete_domain(api):
     path = ENDPOINTS['domains']['delete']['name'] % dict(domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['domains']['delete']['method'])
     t.eq(api.response.status_int, 204)
     t.eq(req['code'], 204)

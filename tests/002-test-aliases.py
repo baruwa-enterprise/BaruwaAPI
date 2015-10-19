@@ -5,7 +5,8 @@ from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
 
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -15,7 +16,7 @@ def test_get_alias(api):
     path = ENDPOINTS['aliases']['get']['name'] % dict(addressid=addressid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['aliases']['get']['method'])
     t.eq(api.response.status_int, 200)
     t.eq(req['id'], addressid)
@@ -34,7 +35,7 @@ def test_create_alias(api):
     path = ENDPOINTS['aliases']['new']['name'] % dict(userid=userid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['aliases']['new']['method'])
     t.eq(api.response.status_int, 201)
     t.eq(req['id'], 3)
@@ -52,7 +53,7 @@ def test_update_alias(api):
     path = ENDPOINTS['aliases']['update']['name'] % dict(addressid=addressid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['aliases']['update']['method'])
     t.eq(api.response.status_int, 200)
     t.isnotin('enabled', req)
@@ -69,7 +70,7 @@ def test_delete_alias(api):
     path = ENDPOINTS['aliases']['delete']['name'] % dict(addressid=addressid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['aliases']['delete']['method'])
     t.eq(api.response.status_int, 204)
     t.eq(req['code'], 204)

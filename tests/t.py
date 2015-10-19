@@ -14,7 +14,7 @@ class ApiRequest(object):
         if url is not None:
             self.url = url
         else:
-            self.url = 'http://%s:%s/api/v1' % (HOST, PORT)
+            self.url = 'http://%s:%s' % (HOST, PORT)
 
     def __call__(self, func):
         def run():

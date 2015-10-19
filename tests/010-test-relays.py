@@ -5,7 +5,8 @@ from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
 
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -15,7 +16,7 @@ def test_get_relay(api):
     path = ENDPOINTS['relays']['get']['name'] % dict(relayid=relayid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['relays']['get']['method'])
     t.eq(api.response.status_int, 200)
     t.eq(req['address'], '192.168.1.20')
@@ -41,7 +42,7 @@ def test_create_relay(api):
     path = ENDPOINTS['relays']['new']['name'] % dict(orgid=orgid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['relays']['new']['method'])
     t.eq(api.response.status_int, 201)
     t.eq(req['address'], '192.168.1.20')
@@ -66,7 +67,7 @@ def test_update_relay(api):
     path = ENDPOINTS['relays']['update']['name'] % dict(relayid=relayid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['relays']['update']['method'])
     t.eq(api.response.status_int, 200)
     t.eq(req['address'], '192.168.1.21')
@@ -91,7 +92,7 @@ def test_delete_relay(api):
     path = ENDPOINTS['relays']['delete']['name'] % dict(relayid=relayid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(api.response.request.method, ENDPOINTS['relays']['delete']['method'])
     t.eq(api.response.status_int, 204)
     t.eq(req['code'], 204)

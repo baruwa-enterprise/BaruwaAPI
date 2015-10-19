@@ -5,7 +5,8 @@ from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.exceptions import BaruwaAPIError
 
 
-BASE_URL = 'http://%s:%s/api/v1' % (HOST, PORT)
+API_PATH = '/api/v1'
+BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
@@ -16,7 +17,7 @@ def test_list_deliveryservers(api):
         domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['deliveryservers']['list']['method'])
@@ -36,7 +37,7 @@ def test_get_deliveryserver(api):
         domainid=domainid, serverid=serverid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['deliveryservers']['get']['method'])
@@ -59,7 +60,7 @@ def test_create_deliveryserver(api):
         domainid=domainid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['deliveryservers']['new']['method'])
@@ -82,7 +83,7 @@ def test_update_deliveryserver(api):
         domainid=domainid, serverid=serverid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['deliveryservers']['update']['method'])
@@ -102,7 +103,7 @@ def test_delete_deliveryserver(api):
         domainid=domainid, serverid=serverid)
     t.eq(
         api.response.final_url,
-        '%s%s' % (BASE_URL, path))
+        '%s%s%s' % (BASE_URL, API_PATH, path))
     t.eq(
         api.response.request.method,
         ENDPOINTS['deliveryservers']['delete']['method'])

@@ -66,6 +66,7 @@ class BaruwaAPIClient(Resource):
             path = opts['name'] % args
         else:
             path = opts['name']
+        path = '/api/v1%s' % path
         return self.request(opts['method'], path=path,
                             payload=body, **kwargs)
 
