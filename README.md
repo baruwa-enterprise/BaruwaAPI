@@ -6,6 +6,7 @@
 
 [![Code Climate](https://codeclimate.com/github/akissa/BaruwaAPI/badges/gpa.svg)](https://codeclimate.com/github/akissa/BaruwaAPI)
 [![Build Status](https://travis-ci.org/akissa/BaruwaAPI.svg?branch=master)](https://travis-ci.org/akissa/BaruwaAPI)
+[![codecov.io](https://codecov.io/github/akissa/BaruwaAPI/coverage.svg?branch=master)](https://codecov.io/github/akissa/BaruwaAPI?branch=master)
 [![MPLv2 License](https://img.shields.io/badge/license-MPLv2-blue.svg?style=flat-square)](https://www.mozilla.org/MPL/2.0/)
 
 ## Installation
