@@ -1,5 +1,11 @@
+import sys
 import mock
-import unittest2
+try:
+    import unittest2
+except ImportError:
+    if sys.version_info < (2, 7):
+        raise
+    import unittest as unittest2
 
 # from restkit import Resource
 from restkit.wrappers import Response
