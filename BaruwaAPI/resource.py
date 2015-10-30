@@ -35,10 +35,10 @@ class BaruwaAPIClient(Resource):
                 'User-Agent': 'BaruwaAPI-Python',
                 'Content-Type': 'application/json'}
 
-    def request(self, *args, **kwargs):
+    def _request(self, *args, **kwargs):
         """Make the request"""
         try:
-            self.response = super(BaruwaAPIClient, self).request(
+            self.response = self.request(
                 *args, headers=self._request_headers(), **kwargs)
         except BaseException, err:
             code = 520
@@ -67,8 +67,8 @@ class BaruwaAPIClient(Resource):
         else:
             path = opts['name']
         path = '/api/v1%s' % path
-        return self.request(opts['method'], path=path,
-                            payload=body, **kwargs)
+        return self._request(
+            opts['method'], path=path, payload=body, **kwargs)
 
     def get_users(self):
         """Get users"""
