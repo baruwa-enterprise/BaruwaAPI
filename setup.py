@@ -25,6 +25,14 @@ from imp import load_source
 from setuptools import setup, find_packages
 
 
+TEST_REQUIRES = ['nose', 'coverage', 'mock']
+
+try:
+    import unittest2
+except ImportError:
+    TEST_REQUIRES.append('unittest2')
+
+
 def get_readme():
     """Generate long description"""
     pandoc = None
@@ -61,7 +69,7 @@ def main():
         packages=find_packages(exclude=['tests']),
         include_package_data=True,
         zip_safe=False,
-        tests_require=['nose', 'coverage'],
+        tests_require=TEST_REQUIRES,
         test_suite='nose.collector',
         install_requires=['restkit'],
         classifiers=[

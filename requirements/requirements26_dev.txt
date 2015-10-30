@@ -1,0 +1,6 @@
+nose
+mock
+restkit
+coverage
+unittest2
+multiprocessing
