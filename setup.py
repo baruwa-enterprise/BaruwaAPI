@@ -27,9 +27,7 @@ from setuptools import setup, find_packages
 
 TEST_REQUIRES = ['nose', 'coverage', 'mock']
 
-try:
-    import unittest2
-except ImportError:
+if sys.version_info < (2, 7):
     TEST_REQUIRES.append('unittest2')
 
 
