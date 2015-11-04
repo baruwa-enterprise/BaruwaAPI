@@ -1,9 +1,6 @@
 machine:
   python:
     version: '2.6.6'
-dependencies:
-  pre:
-      - pip install --upgrade -r requirements/requirements26_dev.txt
 test:
     override:
         - python setup.py nosetests
