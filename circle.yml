@@ -1,8 +1,0 @@
-machine:
-  python:
-    version: '2.6.6'
-test:
-    override:
-        - python setup.py nosetests
-    post:
-        - pip install codecov && codecov
