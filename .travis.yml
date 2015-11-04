@@ -19,4 +19,4 @@ before_install:
     - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pip install -r requirements/requirements27_dev.txt; fi
     - pip install codecov
 after_success:
-  - codecov
+    - codecov
