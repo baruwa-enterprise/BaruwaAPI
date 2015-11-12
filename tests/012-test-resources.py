@@ -7,7 +7,6 @@ except ImportError:
         raise
     import unittest as unittest2
 
-# from restkit import Resource
 from restkit.wrappers import Response
 from BaruwaAPI.endpoints import ENDPOINTS
 from BaruwaAPI.resource import BaruwaAPIClient
