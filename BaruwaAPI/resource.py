@@ -46,8 +46,6 @@ class BaruwaAPIClient(Resource):
                 code = err.status_int
             if hasattr(err, 'message'):
                 message = err.message
-            else:
-                message = str(err)
             raise BaruwaAPIError(code, message)
         if self.response.status_int in [200, 201, 204]:
             body = self.response.body_string()
