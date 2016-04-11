@@ -1,0 +1,40 @@
+{
+    "signatures": [{
+        "type": 1,
+        "id": 1
+    }],
+    "highspam_actions": 2,
+    "delivery_mode": 1,
+    "virus_checks": true,
+    "ldap_callout": false,
+    "dkimkeys": [],
+    "timezone": "Africa/Johannesburg",
+    "spam_actions": 2,
+    "id": 1,
+    "deliveryservers": [{
+        "address": "192.168.1.150",
+        "id": 2,
+        "port": 25
+    }],
+    "site_url": "https://mail.example.com",
+    "authservers": [{
+        "protocol": 2,
+        "id": 2,
+        "address": "mail.example.com"
+    }],
+    "report_every": 3,
+    "aliases": [{
+        "name": "mojo.example.com",
+        "id": 2
+    }],
+    "status": true,
+    "virus_checks_at_smtp": true,
+    "low_score": 10.0,
+    "name": "example.com",
+    "language": "en",
+    "spam_checks": false,
+    "smtp_callout": false,
+    "message_size": "0",
+    "high_score": 20.0,
+    "virus_actions": 2
+}

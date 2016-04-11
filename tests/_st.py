@@ -68,7 +68,8 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             '/api/v1/users/5',
             '/api/v1/aliasaddresses/2',
             '/api/v1/domains',
-                '/api/v1/domains/1']:
+            '/api/v1/domains/1',
+                '/api/v1/domains/byname/example.com']:
             with open('tests%s.json' % path) as handle:
                 data = handle.read()
             self._respond(200, extra_headers, data)

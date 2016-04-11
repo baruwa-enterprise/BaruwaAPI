@@ -40,6 +40,25 @@ def test_get_domain(api):
 
 
 @t.ApiRequest()
+def test_get_domain_by_name(api):
+    domainname = 'example.com'
+    req = api.get_domain_by_name(domainname)
+    path = ENDPOINTS['domains']['get_by_name']['name'] % \
+        dict(domainname=domainname)
+    t.eq(
+        api.response.final_url,
+        '%s%s%s' % (BASE_URL, API_PATH, path))
+    t.eq(
+        api.response.request.method,
+        ENDPOINTS['domains']['get_by_name']['method']
+    )
+    t.eq(api.response.status_int, 200)
+    t.eq(req['id'], 1)
+    t.eq(req['name'], 'example.com')
+    t.raises(BaruwaAPIError, api.get_domain_by_name, 'example.net')
+
+
+@t.ApiRequest()
 def test_create_domain(api):
     data = {
         "name": "example.net",
