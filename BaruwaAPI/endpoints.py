@@ -119,5 +119,13 @@ ENDPOINTS = {
         "update": {"name": "/relays/%(relayid)s", "method": "PUT"},
         "delete": {"name": "/relays/%(relayid)s", "method": "DELETE"}
     },
+    "fallbackservers": {
+        "list": {"name": "/fallbackservers/list/%(orgid)s", "method": "GET"},
+        "new": {"name": "/fallbackservers/%(orgid)s", "method": "POST"},
+        "get": {"name": "/fallbackservers/%(serverid)s", "method": "GET"},
+        "update": {"name": "/fallbackservers/%(serverid)s", "method": "PUT"},
+        "delete": {
+            "name": "/fallbackservers/%(serverid)s", "method": "DELETE"},
+    },
     "status": {"name": "/status", "method": "GET"}
 }

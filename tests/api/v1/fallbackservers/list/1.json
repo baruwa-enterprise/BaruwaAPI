@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "organization": {
+                "name": "Baruwa",
+                "id": 1
+            },
+            "protocol": 1,
+            "enabled": true,
+            "require_tls": false,
+            "id": 9,
+            "address": "192.168.1.150",
+            "port": 25
+        }
+    ],
+    "meta": {
+        "total": 1
+    }
+}

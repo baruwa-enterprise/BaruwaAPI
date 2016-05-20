@@ -81,7 +81,7 @@ def main():
             'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
             'Natural Language :: English',
             'Operating System :: OS Independent'],
-        )
+    )
     setup(**opts)
 
 

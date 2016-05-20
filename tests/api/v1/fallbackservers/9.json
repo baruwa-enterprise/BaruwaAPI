@@ -1,0 +1,11 @@
+{
+    "organization": {
+        "name": "Baruwa",
+        "id": 2
+    },
+    "protocol": 1,
+    "enabled": true,
+    "id": 9,
+    "address": "192.168.1.150",
+    "port": 25
+}

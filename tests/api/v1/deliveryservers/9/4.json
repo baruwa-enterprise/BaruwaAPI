@@ -5,6 +5,7 @@
     },
     "protocol": 1,
     "enabled": true,
+    "require_tls": false,
     "id": 9,
     "address": "192.168.1.151",
     "port": 25

@@ -361,6 +361,38 @@ class BaruwaAPIClient(Resource):
             dict(relayid=relayid),
             body=data)
 
+    def get_fallbackservers(self, orgid):
+        """Get Fallback server"""
+        return self.api_call(
+            ENDPOINTS['fallbackservers']['list'],
+            dict(orgid=orgid))
+
+    def get_fallbackserver(self, serverid):
+        """Get Fallback server"""
+        return self.api_call(
+            ENDPOINTS['fallbackservers']['get'],
+            dict(serverid=serverid))
+
+    def create_fallbackserver(self, orgid, data):
+        """Create Fallback server"""
+        return self.api_call(
+            ENDPOINTS['fallbackservers']['new'],
+            dict(orgid=orgid), body=data)
+
+    def update_fallbackserver(self, serverid, data):
+        """Update Fallback server"""
+        return self.api_call(
+            ENDPOINTS['fallbackservers']['update'],
+            dict(serverid=serverid),
+            body=data)
+
+    def delete_fallbackserver(self, serverid, data):
+        """Delete Fallback server"""
+        return self.api_call(
+            ENDPOINTS['fallbackservers']['delete'],
+            dict(serverid=serverid),
+            body=data)
+
     def get_status(self):
         """Get system status"""
         return self.api_call(ENDPOINTS['status'])

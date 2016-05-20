@@ -62,6 +62,8 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             '/api/v1/authservers/9',
             '/api/v1/deliveryservers/9/4',
             '/api/v1/deliveryservers/9',
+            '/api/v1/fallbackservers/list/1',
+            '/api/v1/fallbackservers/9',
             '/api/v1/domainaliases/9',
             '/api/v1/domainaliases/9/4',
             "/api/v1/users",
@@ -111,6 +113,7 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             '/api/v1/authservers/3',
             '/api/v1/authservers/9',
             '/api/v1/deliveryservers/9',
+            '/api/v1/fallbackservers/1',
             '/api/v1/domainaliases/9',
             '/api/v1/aliasaddresses/2',
                 '/api/v1/domains']:
@@ -152,6 +155,7 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             '/api/v1/ldapsettings/1/2/3',
             '/api/v1/authservers/9/3',
             '/api/v1/deliveryservers/9/4',
+            '/api/v1/fallbackservers/9',
             '/api/v1/domainaliases/9/3',
             '/api/v1/aliasaddresses/3',
                 '/api/v1/domains/3']:
@@ -175,6 +179,7 @@ class HTTPTestHandler(BaseHTTPRequestHandler):
             "/api/v1/ldapsettings/1/2/3",
             "/api/v1/authservers/9/3",
             "/api/v1/deliveryservers/9/4",
+            '/api/v1/fallbackservers/9',
             "/api/v1/domainaliases/9/3",
             "/api/v1/domains/3",
             "/api/v1/users/10",
