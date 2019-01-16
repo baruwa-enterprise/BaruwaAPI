@@ -221,6 +221,33 @@ class BaruwaAPIClient(Resource):
             dict(domainid=domainid, serverid=serverid),
             body=data)
 
+    def get_user_deliveryserver(self, domainid, serverid):
+        """Get a user delivery server"""
+        return self.api_call(
+            ENDPOINTS['userdeliveryservers']['get'],
+            dict(domainid=domainid, serverid=serverid))
+
+    def create_user_deliveryserver(self, domainid, data):
+        """Create a user delivery server"""
+        return self.api_call(
+            ENDPOINTS['userdeliveryservers']['new'],
+            dict(domainid=domainid),
+            body=data)
+
+    def update_user_deliveryserver(self, domainid, serverid, data):
+        """Update a user delivery server"""
+        return self.api_call(
+            ENDPOINTS['userdeliveryservers']['update'],
+            dict(domainid=domainid, serverid=serverid),
+            body=data)
+
+    def delete_user_deliveryserver(self, domainid, serverid, data):
+        """Delete a user delivery server"""
+        return self.api_call(
+            ENDPOINTS['userdeliveryservers']['delete'],
+            dict(domainid=domainid, serverid=serverid),
+            body=data)
+
     def get_authservers(self, domainid):
         """Get Authentication servers"""
         return self.api_call(
