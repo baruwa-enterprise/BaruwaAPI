@@ -447,6 +447,33 @@ class BaruwaAPIClient(Resource):
             dict(serverid=serverid),
             body=data)
 
+    def get_org_smarthost(self, orgid, serverid):
+        """Get an organization smarthost"""
+        return self.api_call(
+            ENDPOINTS['orgsmarthosts']['get'],
+            dict(orgid=orgid, serverid=serverid))
+
+    def create_org_smarthost(self, orgid, data):
+        """Create an organization smarthost"""
+        return self.api_call(
+            ENDPOINTS['orgsmarthosts']['new'],
+            dict(orgid=orgid),
+            body=data)
+
+    def update_org_smarthost(self, orgid, serverid, data):
+        """Update an organization smarthost"""
+        return self.api_call(
+            ENDPOINTS['orgsmarthosts']['update'],
+            dict(orgid=orgid, serverid=serverid),
+            body=data)
+
+    def delete_org_smarthost(self, orgid, serverid, data):
+        """Delete an organization smarthost"""
+        return self.api_call(
+            ENDPOINTS['orgsmarthosts']['delete'],
+            dict(orgid=orgid, serverid=serverid),
+            body=data)
+
     def get_status(self):
         """Get system status"""
         return self.api_call(ENDPOINTS['status'])

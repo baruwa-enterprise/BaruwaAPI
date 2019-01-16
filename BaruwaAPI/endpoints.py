@@ -153,5 +153,18 @@ ENDPOINTS = {
         "delete": {
             "name": "/fallbackservers/%(serverid)s", "method": "DELETE"},
     },
+    "orgsmarthosts": {
+        "list": {"name": "/organizations/smarthosts/%(orgid)s", "method": "GET"},
+        "new": {"name": "/organizations/smarthosts/%(orgid)s", "method": "POST"},
+        "get": {
+            "name": "/organizations/smarthosts/%(orgid)s/%(serverid)s",
+            "method": "GET"},
+        "update": {
+            "name": "/organizations/smarthosts/%(orgid)s/%(serverid)s",
+            "method": "PUT"},
+        "delete": {
+            "name": "/organizations/smarthosts/%(orgid)s/%(serverid)s",
+            "method": "DELETE"}
+    },
     "status": {"name": "/status", "method": "GET"}
 }
