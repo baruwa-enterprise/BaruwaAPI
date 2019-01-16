@@ -248,6 +248,33 @@ class BaruwaAPIClient(Resource):
             dict(domainid=domainid, serverid=serverid),
             body=data)
 
+    def get_domain_smarthost(self, domainid, serverid):
+        """Get a domain smarthost"""
+        return self.api_call(
+            ENDPOINTS['domainsmarthosts']['get'],
+            dict(domainid=domainid, serverid=serverid))
+
+    def create_domain_smarthost(self, domainid, data):
+        """Create a domain smarthost"""
+        return self.api_call(
+            ENDPOINTS['domainsmarthosts']['new'],
+            dict(domainid=domainid),
+            body=data)
+
+    def update_domain_smarthost(self, domainid, serverid, data):
+        """Update a domain smarthost"""
+        return self.api_call(
+            ENDPOINTS['domainsmarthosts']['update'],
+            dict(domainid=domainid, serverid=serverid),
+            body=data)
+
+    def delete_domain_smarthost(self, domainid, serverid, data):
+        """Delete a domain smarthost"""
+        return self.api_call(
+            ENDPOINTS['domainsmarthosts']['delete'],
+            dict(domainid=domainid, serverid=serverid),
+            body=data)
+
     def get_authservers(self, domainid):
         """Get Authentication servers"""
         return self.api_call(

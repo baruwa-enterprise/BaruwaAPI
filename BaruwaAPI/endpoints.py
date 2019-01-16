@@ -78,6 +78,19 @@ ENDPOINTS = {
             "name": "/userdeliveryservers/%(domainid)s/%(serverid)s",
             "method": "DELETE"}
     },
+    "domainsmarthosts": {
+        "list": {"name": "/domains/smarthosts/%(domainid)s", "method": "GET"},
+        "new": {"name": "/domains/smarthosts/%(domainid)s", "method": "POST"},
+        "get": {
+            "name": "/domains/smarthosts/%(domainid)s/%(serverid)s",
+            "method": "GET"},
+        "update": {
+            "name": "/domains/smarthosts/%(domainid)s/%(serverid)s",
+            "method": "PUT"},
+        "delete": {
+            "name": "/domains/smarthosts/%(domainid)s/%(serverid)s",
+            "method": "DELETE"}
+    },
     "authservers": {
         "list": {"name": "/authservers/%(domainid)s", "method": "GET"},
         "new": {"name": "/authservers/%(domainid)s", "method": "POST"},
