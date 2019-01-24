@@ -4,8 +4,8 @@
 ## Python bindings for the Baruwa REST API
 
 
-[![Build Status](https://travis-ci.org/akissa/BaruwaAPI.svg?branch=master)](https://travis-ci.org/akissa/BaruwaAPI)
-[![codecov.io](https://codecov.io/github/akissa/BaruwaAPI/coverage.svg?branch=master)](https://codecov.io/github/akissa/BaruwaAPI?branch=master)
+[![Build Status](https://travis-ci.org/baruwa-enterprise/BaruwaAPI.svg?branch=master)](https://travis-ci.org/baruwa-enterprise/BaruwaAPI)
+[![codecov.io](https://codecov.io/github/baruwa-enterprise/BaruwaAPI/coverage.svg?branch=master)](https://codecov.io/github/baruwa-enterprise/BaruwaAPI?branch=master)
 [![MPLv2 License](https://img.shields.io/badge/license-MPLv2-blue.svg?style=flat-square)](https://www.mozilla.org/MPL/2.0/)
 
 ## Installation
@@ -16,13 +16,13 @@ Install from PyPi
 
 Install from Githib
 
-    git clone https://github.com/akissa/BaruwaAPI.git
+    git clone https://github.com/baruwa-enterprise/BaruwaAPI.git
     cd BaruwaAPI
     python setup.py install
 
 ## Contributing
 
-1. Fork it (https://github.com/akissa/BaruwaAPI/fork)
+1. Fork it (https://github.com/baruwa-enterprise/BaruwaAPI/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -32,4 +32,4 @@ Install from Githib
 ## License
 
 All code is licensed under the
-[MPLv2 License](https://github.com/akissa/BaruwaAPI/blob/master/LICENSE).
+[MPLv2 License](https://github.com/baruwa-enterprise/BaruwaAPI/blob/master/LICENSE).
