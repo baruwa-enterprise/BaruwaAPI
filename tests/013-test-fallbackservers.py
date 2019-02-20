@@ -10,13 +10,32 @@ BASE_URL = 'http://%s:%s' % (HOST, PORT)
 
 
 @t.ApiRequest()
-def test_list_deliveryservers(api):
+def test_list_fallbackservers(api):
     orgid = 1
     req = api.get_fallbackservers(orgid)
     path = ENDPOINTS['fallbackservers']['list']['name'] % dict(orgid=orgid)
     t.eq(
         api.response.final_url,
         '%s%s%s' % (BASE_URL, API_PATH, path))
+    t.eq(
+        api.response.request.method,
+        ENDPOINTS['fallbackservers']['list']['method'])
+    t.eq(api.response.status_int, 200)
+    t.isin('items', req)
+    t.isin('meta', req)
+    t.eq(req['items'][0]['address'], '192.168.1.150')
+    t.eq(req['meta']['total'], 1)
+
+
+@t.ApiRequest()
+def test_list_fallbackservers_paged(api):
+    orgid = 1
+    page = 1
+    req = api.get_fallbackservers(orgid, page=page)
+    path = ENDPOINTS['fallbackservers']['list']['name'] % dict(orgid=orgid)
+    t.eq(
+        api.response.final_url,
+        '%s%s%s?page=%d' % (BASE_URL, API_PATH, path, page))
     t.eq(
         api.response.request.method,
         ENDPOINTS['fallbackservers']['list']['method'])

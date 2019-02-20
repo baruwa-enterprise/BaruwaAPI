@@ -29,6 +29,26 @@ def test_list_authservers(api):
 
 
 @t.ApiRequest()
+def test_list_authservers_paged(api):
+    page = 1
+    domainid = 9
+    req = api.get_authservers(domainid, page=page)
+    path = ENDPOINTS['authservers']['list']['name'] % dict(
+        domainid=domainid)
+    t.eq(
+        api.response.final_url,
+        '%s%s%s?page=%d' % (BASE_URL, API_PATH, path, page))
+    t.eq(
+        api.response.request.method,
+        ENDPOINTS['authservers']['list']['method'])
+    t.eq(api.response.status_int, 200)
+    t.isin('items', req)
+    t.isin('meta', req)
+    t.eq(req['items'][0]['address'], '192.168.1.150')
+    t.eq(req['meta']['total'], 1)
+
+
+@t.ApiRequest()
 def test_get_authserver(api):
     domainid = 9
     serverid = 4

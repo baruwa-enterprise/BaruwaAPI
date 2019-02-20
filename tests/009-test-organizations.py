@@ -27,6 +27,24 @@ def test_list_organizations(api):
 
 
 @t.ApiRequest()
+def test_list_organizations_paged(api):
+    page = 1
+    req = api.get_organizations(page=page)
+    path = ENDPOINTS['organizations']['list']['name']
+    t.eq(
+        api.response.final_url,
+        '%s%s%s?page=%d' % (BASE_URL, API_PATH, path, page))
+    t.eq(
+        api.response.request.method,
+        ENDPOINTS['organizations']['list']['method'])
+    t.eq(api.response.status_int, 200)
+    t.isin('items', req)
+    t.isin('meta', req)
+    t.eq(req['items'][0]['name'], 'TDS')
+    t.eq(req['meta']['total'], 3)
+
+
+@t.ApiRequest()
 def test_get_organization(api):
     orgid = 1
     req = api.get_organization(orgid)

@@ -22,6 +22,21 @@ def test_get_users(api):
     t.eq(req['items'][0]['username'], 'fuzzy@example.com')
     t.eq(req['meta']['total'], 2)
 
+@t.ApiRequest()
+def test_get_users_paged(api):
+    page = 1
+    req = api.get_users(page=page)
+    path = ENDPOINTS['users']['list']['name']
+    t.eq(
+        api.response.final_url,
+        '%s%s%s?page=%d' % (BASE_URL, API_PATH, path, page))
+    t.eq(api.response.request.method, ENDPOINTS['users']['list']['method'])
+    t.eq(api.response.status_int, 200)
+    t.isin('items', req)
+    t.isin('meta', req)
+    t.eq(req['items'][0]['username'], 'fuzzy@example.com')
+    t.eq(req['meta']['total'], 2)
+
 
 @t.ApiRequest()
 def test_get_user(api):

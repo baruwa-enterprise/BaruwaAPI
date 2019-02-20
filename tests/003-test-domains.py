@@ -25,6 +25,22 @@ def test_list_domains(api):
 
 
 @t.ApiRequest()
+def test_list_domains_paged(api):
+    page = 1
+    req = api.get_domains(page=page)
+    path = ENDPOINTS['domains']['list']['name']
+    t.eq(
+        api.response.final_url,
+        '%s%s%s?page=%d' % (BASE_URL, API_PATH, path, page))
+    t.eq(api.response.request.method, ENDPOINTS['domains']['list']['method'])
+    t.eq(api.response.status_int, 200)
+    t.isin('items', req)
+    t.isin('meta', req)
+    t.eq(req['items'][0]['name'], 'example.com')
+    t.eq(req['meta']['total'], 2)
+
+
+@t.ApiRequest()
 def test_get_domain(api):
     domainid = 1
     req = api.get_domain(domainid)
