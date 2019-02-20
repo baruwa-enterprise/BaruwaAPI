@@ -43,13 +43,13 @@ class BaruwaAPIClient(Resource):
         except BaseException, err:
             code = 520
             if hasattr(err, 'status_int'):
-                code = err.status_int
+                code = err.status_int  # pylint: disable=no-member
             if hasattr(err, 'message'):
                 message = err.message
             raise BaruwaAPIError(code, message)
         if self.response.status_int in [200, 201, 204]:
             body = self.response.body_string()
-            if not len(body):
+            if not body:
                 body = '{"code":%d,"message":"Completed successfully"}' % \
                     self.response.status_int
         else:
@@ -68,9 +68,12 @@ class BaruwaAPIClient(Resource):
         return self._request(
             opts['method'], path=path, payload=body, **kwargs)
 
-    def get_users(self):
+    def get_users(self, page=None):
         """Get users"""
-        return self.api_call(ENDPOINTS['users']['list'])
+        opts = {}
+        if page:
+            opts['page'] = page
+        return self.api_call(ENDPOINTS['users']['list'], **opts)
 
     def get_user(self, userid):
         """Get user"""
@@ -122,9 +125,12 @@ class BaruwaAPIClient(Resource):
             dict(addressid=addressid),
             body=data)
 
-    def get_domains(self):
+    def get_domains(self, page=None):
         """Get domains"""
-        return self.api_call(ENDPOINTS['domains']['list'])
+        opts = {}
+        if page:
+            opts['page'] = page
+        return self.api_call(ENDPOINTS['domains']['list'], **opts)
 
     def get_domain(self, domainid):
         """Get a domain"""
@@ -155,11 +161,14 @@ class BaruwaAPIClient(Resource):
             ENDPOINTS['domains']['delete'],
             dict(domainid=domainid))
 
-    def get_domainaliases(self, domainid):
+    def get_domainaliases(self, domainid, page=None):
         """Get Domain aliases"""
+        opts = {}
+        if page:
+            opts['page'] = page
         return self.api_call(
             ENDPOINTS['domainaliases']['list'],
-            dict(domainid=domainid))
+            dict(domainid=domainid), **opts)
 
     def get_domainalias(self, domainid, aliasid):
         """Get a Domain alias"""
@@ -188,11 +197,14 @@ class BaruwaAPIClient(Resource):
             dict(domainid=domainid, aliasid=aliasid),
             body=data)
 
-    def get_deliveryservers(self, domainid):
+    def get_deliveryservers(self, domainid, page=None):
         """Get a domains delivery servers"""
+        opts = {}
+        if page:
+            opts['page'] = page
         return self.api_call(
             ENDPOINTS['deliveryservers']['list'],
-            dict(domainid=domainid))
+            dict(domainid=domainid), **opts)
 
     def get_deliveryserver(self, domainid, serverid):
         """Get a delivery server"""
@@ -275,11 +287,14 @@ class BaruwaAPIClient(Resource):
             dict(domainid=domainid, serverid=serverid),
             body=data)
 
-    def get_authservers(self, domainid):
+    def get_authservers(self, domainid, page=None):
         """Get Authentication servers"""
+        opts = {}
+        if page:
+            opts['page'] = page
         return self.api_call(
             ENDPOINTS['authservers']['list'],
-            dict(domainid=domainid))
+            dict(domainid=domainid), **opts)
 
     def get_authserver(self, domainid, serverid):
         """Get an Authentication server"""
@@ -362,9 +377,12 @@ class BaruwaAPIClient(Resource):
             dict(domainid=domainid, serverid=serverid, settingsid=settingsid),
             body=data)
 
-    def get_organizations(self):
+    def get_organizations(self, page=None):
         """Get organizations"""
-        return self.api_call(ENDPOINTS['organizations']['list'])
+        opts = {}
+        if page:
+            opts['page'] = page
+        return self.api_call(ENDPOINTS['organizations']['list'], **opts)
 
     def get_organization(self, orgid):
         """Get an organization"""
@@ -415,11 +433,14 @@ class BaruwaAPIClient(Resource):
             dict(relayid=relayid),
             body=data)
 
-    def get_fallbackservers(self, orgid):
+    def get_fallbackservers(self, orgid, page=None):
         """Get Fallback server"""
+        opts = {}
+        if page:
+            opts['page'] = page
         return self.api_call(
             ENDPOINTS['fallbackservers']['list'],
-            dict(orgid=orgid))
+            dict(orgid=orgid), **opts)
 
     def get_fallbackserver(self, serverid):
         """Get Fallback server"""
