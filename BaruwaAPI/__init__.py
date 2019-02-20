@@ -12,7 +12,7 @@ BaruwaAPI
 from BaruwaAPI.resource import BaruwaAPIClient
 
 # pylint: disable=invalid-name
-version_info = (0, 0, 4)
+version_info = (0, 0, 5)
 __author__ = "Andrew Colin Kissa"
 __copyright__ = u"© 2015-2019 Andrew Colin Kissa"
 __email__ = "andrew@topdog.za.net"

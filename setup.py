@@ -9,7 +9,7 @@
 """
 BaruwaAPI: Python bindings for Baruwa REST API
 
-Copyright 2015-2016, Andrew Colin Kissa
+Copyright 2015-2019, Andrew Colin Kissa
 Licensed under MPL 2.0.
 """
 import os
